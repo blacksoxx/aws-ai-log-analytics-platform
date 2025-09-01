@@ -1,21 +1,17 @@
 # Terraform
-terraform/.terraform/
-terraform/*.tfstate*
-terraform/*.tfstate.backup
-terraform/.terraform.lock.hcl
-terraform/crash.log
-terraform/terraform.tfstate.1751930451.backup
+**/.terraform/
+*.tfstate
+*.tfstate.*
+terraform.tfstate.backup
+.terraform.lock.hcl
+crash.log
 
 # Node.js (frontend)
-cloud-log-viz/node_modules
-cloud-log-viz/dist
-cloud-log-viz/.env.local
-cloud-log-viz/.env.development.local
-cloud-log-viz/.env.test.local
-cloud-log-viz/.env.production.local
-cloud-log-viz/.env
+cloud-log-viz/node_modules/
+cloud-log-viz/dist/
+cloud-log-viz/.env*
+!cloud-log-viz/.env.example
 
 # Python (Lambda)
 __pycache__/
 *.pyc
-
