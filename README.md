@@ -7,9 +7,8 @@ This project is a **cloud-native log analytics solution** that ingests logs in r
 ## 🚀 Features
 - **Real-time log ingestion** with **Kinesis Firehose**
 - **Scalable storage** in **S3** (raw logs) and **DynamoDB** (metadata & indexing)
-- **Optional OpenSearch** integration for full-text log search
-- **AI/ML anomaly detection** pipeline (SageMaker or custom ML models)
-- **API Gateway + Lambda** backend to expose logs and analytics
+- **Amazon Bedrock Summarization** to resume complex logs into simple text
+- **API Gateway** with **Lambda** backend to expose logs and analytics
 - **React + Vite + Tailwind dashboard** to visualize logs and anomalies
 
 ---
