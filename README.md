@@ -22,8 +22,7 @@ This project is a **cloud-native log analytics solution** that ingests logs in r
 3. Firehose delivers logs to:
    - **Amazon S3** (long-term raw storage)
    - **DynamoDB** (metadata for APIs)
-   - **OpenSearch** (optional, for search/visualization)
-4. **Machine Learning** (SageMaker or Lambda-based models) detects anomalies and stores results in DynamoDB.
+4. **Amazon Bedrock** detects anomalies and stores results in DynamoDB.
 5. **API Gateway + Lambda** expose endpoints to query logs.
 6. **React Dashboard** fetches logs from APIs for visualization.
 
@@ -33,20 +32,9 @@ This project is a **cloud-native log analytics solution** that ingests logs in r
 
 ```
 .
-├── infrastructure/       # Terraform code for AWS resources
-│   ├── main.tf
-│   ├── outputs.tf
-│   └── variables.tf
-├── backend/              # API layer (Lambda functions)
-│   ├── getLogs.js
-│   ├── getLogById.js
-│   └── anomalyDetection.js
-├── dashboard/            # React + TS frontend
-│   ├── src/
-│   ├── vite.config.ts
-│   ├── tailwind.config.ts
-│   └── package.json
-└── README.md             # This file
+├── terraform/                     # Infrastructure code
+├── lambda_functions/              # API layer (Lambda functions)                 
+└── cloud-log-viz/                 # Dashboard
 ```
 
 ---
@@ -61,8 +49,9 @@ This project is a **cloud-native log analytics solution** that ingests logs in r
    ```
 3. Deploy infrastructure:
    ```bash
-   cd infrastructure
+   cd terraform
    terraform init
+   terraform plan
    terraform apply
    ```
 
@@ -70,22 +59,12 @@ This provisions:
 - Kinesis Firehose
 - S3 Bucket
 - DynamoDB Table
-- Lambda functions
+- 2 Lambda functions
 - API Gateway endpoints
 
 ---
 
-### 2️⃣ Backend Setup
-Install dependencies:
-   ```bash
-   cd backend
-   npm install
-   ```
-
-
----
-
-### 3️⃣ Dashboard Setup
+### 2️⃣ Dashboard Setup
 1. Go to dashboard:
    ```bash
    cd cloud-log-viz
@@ -102,7 +81,7 @@ Install dependencies:
 
 ---
 
-### 4️⃣ Environment Variables
+### 3️⃣ Environment Variables
 
 Set in `.env` (for backend & dashboard):
 ```env
